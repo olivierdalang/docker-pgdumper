@@ -1,37 +1,41 @@
 #!/bin/bash
 
-echo -e "\n\n\n"
-echo "Running pg_backup_rotated [$(date)]"
-echo -e "--------------------------------------------\n"
+# We exit on error
+set -e
+
+# Below is the original pg_backup_rotated.sh provided with
+# postgresql.
+
+# The LOAD CONFIG section is commented out as we use ENV VARS directly.
  
-###########################
-####### LOAD CONFIG #######
-###########################
+# ###########################
+# ####### LOAD CONFIG #######
+# ###########################
  
-while [ $# -gt 0 ]; do
-        case $1 in
-                -c)
-                        CONFIG_FILE_PATH="$2"
-                        shift 2
-                        ;;
-                *)
-                        ${ECHO} "Unknown Option \"$1\"" 1>&2
-                        exit 2
-                        ;;
-        esac
-done
+# while [ $# -gt 0 ]; do
+#         case $1 in
+#                 -c)
+#                         CONFIG_FILE_PATH="$2"
+#                         shift 2
+#                         ;;
+#                 *)
+#                         ${ECHO} "Unknown Option \"$1\"" 1>&2
+#                         exit 2
+#                         ;;
+#         esac
+# done
  
-if [ -z $CONFIG_FILE_PATH ] ; then
-        SCRIPTPATH=$(cd ${0%/*} && pwd -P)
-        CONFIG_FILE_PATH="${SCRIPTPATH}/pg_backup.config"
-fi
+# if [ -z $CONFIG_FILE_PATH ] ; then
+#         SCRIPTPATH=$(cd ${0%/*} && pwd -P)
+#         CONFIG_FILE_PATH="${SCRIPTPATH}/pg_backup.config"
+# fi
  
-if [ ! -r ${CONFIG_FILE_PATH} ] ; then
-        echo "Could not load config file from ${CONFIG_FILE_PATH}" 1>&2
-        exit 1
-fi
+# if [ ! -r ${CONFIG_FILE_PATH} ] ; then
+#         echo "Could not load config file from ${CONFIG_FILE_PATH}" 1>&2
+#         exit 1
+# fi
  
-source "${CONFIG_FILE_PATH}"
+# source "${CONFIG_FILE_PATH}"
  
 ###########################
 #### PRE-BACKUP CHECKS ####
