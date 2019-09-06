@@ -1,4 +1,4 @@
-FROM python:2.7.13-alpine3.6
+FROM python:2.7-alpine3.10
 
 # Default config
 # (see pg_backup.config for detailed explanations)
