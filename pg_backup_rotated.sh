@@ -68,7 +68,11 @@ fi;
 function perform_backups()
 {
 	SUFFIX=$1
-	FINAL_BACKUP_DIR=$BACKUP_DIR"`date +\%Y-\%m-\%d`$SUFFIX/"
+    if [ $SUFFIX = "latest" ]; then
+        FINAL_BACKUP_DIR=$BACKUP_DIR"$SUFFIX/"
+    else
+        FINAL_BACKUP_DIR=$BACKUP_DIR"`date +\%Y-\%m-\%d`$SUFFIX/"
+    fi;
  
 	echo "Making backup directory in $FINAL_BACKUP_DIR"
  
@@ -187,3 +191,7 @@ fi
 find $BACKUP_DIR -maxdepth 1 -mtime +$DAYS_TO_KEEP -name "*-daily" -exec rm -rf '{}' ';'
  
 perform_backups "-daily"
+
+# LATEST BACKUP
+# same as daily, but with the same name
+perform_backups "latest"

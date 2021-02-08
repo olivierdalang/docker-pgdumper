@@ -16,7 +16,7 @@ services:
     image: mdillon/postgis:9.6-alpine
     volumes:
       - database:/var/lib/postgresql/data/
-    restart: always
+    restart: unless-stopped
 
   # add the pgdumper service
   pgdumper:
@@ -25,7 +25,7 @@ services:
       - pgdumps:/pgdumps/
     environment:
       - HOSTNAME=dbservice
-    restart: always
+    restart: unless-stopped
 
 # volumes definition
 volumes:
@@ -86,3 +86,8 @@ WEEKS_TO_KEEP=5
  
 ######################################
 ```
+
+## Changelog
+
+- 0.1 : creates a "latest" dump (so you can restore latest version from a constant path)
+- 0.0.1 : initial release
