@@ -3,6 +3,9 @@
 # We exit on error
 set -e
 
+# We create the backup directory if it doesn't exist
+mkdir -p $BACKUP_DIR;
+
 # Below is the original pg_backup_rotated.sh provided with
 # postgresql.
 

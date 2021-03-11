@@ -89,5 +89,6 @@ WEEKS_TO_KEEP=5
 
 ## Changelog
 
+- 0.1.1 : create the backup directory to avoid failure if it does not exist
 - 0.1 : creates a "latest" dump (so you can restore latest version from a constant path)
 - 0.0.1 : initial release
